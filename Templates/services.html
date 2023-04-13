@@ -5,10 +5,10 @@
   <header id="header" class="header d-flex align-items-center ">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-left  me-auto me-lg-0">
+      <a href="{% url 'home' %}" class="logo d-flex align-items-left  me-auto me-lg-0">
 
 
-        <h1><a href="index.html"> <img src="{% static 'img/unnamed.png' %}" width = "200px" alt=""> </a></h1>
+        <h1><a href="{% url 'home' %}"> <img src="{% static 'img/unnamed.png' %}" width = "200px" alt=""> </a></h1>
       </a>
 
 
@@ -37,6 +37,7 @@
         </li>
         <li><a href="{% url 'services' %}">Services</a></li>
         <li><a href="{% url 'contact' %}">Contact</a></li>
+        <li><a href="{% url 'blog' %}">Blog</a></li>
       </ul>
     </nav><!-- .navbar -->
 
@@ -62,7 +63,7 @@
             <h2>Services</h2>
 
 
-            <a class="cta-btn" style:"color=black" href="contact.html">Available for hire</a>
+            <a class="cta-btn"  href="{% url 'services' %}">Available for hire</a>
 
           </div>
         </div>

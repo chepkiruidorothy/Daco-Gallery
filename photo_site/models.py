@@ -24,7 +24,4 @@ class Shoot(models.Model):
 class Gallery(models.Model):
     image = models.ImageField(upload_to="images", blank=True, null=True)
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
-    shoot = models.ForeignKey(Shoot, on_delete = models.CASCADE, null="True")
-
-    # def __str__(self):
-    #     return self.category
+    shoot = models.ForeignKey(Shoot, on_delete = models.CASCADE, null=True)

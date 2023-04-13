@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 import random
 from .models import *
 
+from .forms import EmailForm
+from django.conf import settings
+from django.core.mail import send_mail
 # Create your views here.
 GRID_SIZE = 16
 
@@ -32,3 +35,7 @@ def services(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+# def blog(request):
+#     blogs = Blog.objects.all()
+#     return render(request, 'blog.html',{'blog':blog})
