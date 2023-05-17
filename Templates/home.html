@@ -1,38 +1,78 @@
 {% extends 'base.html'%}
 {% block content%}
 
-<div class="container mt-5 mb-3">
+
+{%load static%}
+
+<header id="header" class="header d-flex align-items-center ">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+
+    <a href="{% url 'home' %}" class="logo d-flex align-items-left  me-auto me-lg-0">
 
 
+      <h1><a href="{% url 'home' %}"> <img src="{% static 'img/unnamed.png' %}" width = "200px" alt=""> </a></h1>
+    </a>
 
-{% for post in posts %}
-          <div class="row ">
-        <div class="col-6 mb-4">
-          <div class="card-header text-center">
-            by {{post.author}}
-          </div>
-            <div class="card text-center shadow" >
+<nav id="navbar" class="navbar">
+  <ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+      <ul>
+
+        {%for category in categories%}
+          <li>
+            <a href="{% url 'category'  category.slug %}">
+                {{category.name}}
+                <br>
+
+            </a>
+          </li>
+        {%endfor%}
+
+      </ul>
+    </li>
+    <li><a href="{% url 'services' %}">Services</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li><a href="{% url 'blog' %}">Blog</a></li>
+  </ul>
+</nav><!-- .navbar -->
+
+<div class="header-social-links">
+  <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+  <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+  <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+  <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+</div>
+<i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+<i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+</div>
+</header><!-- End Header -->
+
+    <section id="blog" class="blog">
+              {% for post in posts %}
+      <div class="container">
 
 
+        <div class="row gy-2">
 
-                <img src="/media/{{post.image}}"  class="card-img-top" alt="..." height="300px" >
-
-                <div class="card-body">
-
-
-                  <h5 class="card-title">{{post.title}} </h5>
-                  <p class="card-text">{{post.body| truncatechars:200}}</p>
-                  <a href="{{post.slug}}" class="btn btn-primary">Read More {% if user.is_superuser %}<a href="delete_blog_post/{{post.slug}}/" class="btn btn-danger mx-4">Delete Blog</a>{% endif %}</a>
-                </div>
+          <div class="col-xl-6 col-md-6 d-flex">
+            <div class="blog-item position-relative">
+              <img src="{{post.image.url}}"  class="card-img-top" alt="..." height="300px" >
+              <h4><a href="{{post.slug}}" class="stretched-link">{{post.title}} </a></h4>
+              <p> {{post.body| truncatechars:200|safe}} </p>
+              <a href="{{post.slug}}" class="btn btn-primary"> Read More </a>
                 <div class="card-footer">
-  <small class="text-muted">{{post.created_on}}</small>
-</div>
+              <small class="text-muted">{{post.created_on}}</small>
               </div>
+            </div>
+          </div><!-- End Service Item -->
         </div>
-        {% endfor %}
-    </div>
-</div>
 
+      </div>
+        {%endfor%}
+    </section>
 
 
 {% endblock %}

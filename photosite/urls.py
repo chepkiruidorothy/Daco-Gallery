@@ -30,8 +30,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('services/', views.services, name='services'),
     path('contact/', views.contact, name='contact'),
-    # path('contact/sendMail/', views.sendMail, name='sendMail'),
-    # path('blog/', views.blog, name='blog'),
     path('category/<slug:slug>/', views.category, name='category'),
     path('blog/', include(blog.urls)),
 
