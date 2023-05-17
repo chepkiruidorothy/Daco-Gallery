@@ -1,21 +1,74 @@
 
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static%}
 
 
-<div class="container  mt-3 ">
-  <div class="row  mt-2">
-    <div class="col-md-8 card mb-3 border  mt-4  d-flex justify-content-center">
-      <div class="card-body">
+<header id="header" class="header d-flex align-items-center ">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+
+    <a href="{% url 'home' %}" class="logo d-flex align-items-left  me-auto me-lg-0">
+
+
+      <h1><a href="{% url 'home' %}"> <img src="{% static 'img/unnamed.png' %}" width = "200px" alt=""> </a></h1>
+    </a>
+
+
+  <!-- ======= Hero Section ======= -->
+  <nav id="navbar" class="navbar">
+    <ul>
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+        <ul>
+
+          {%for category in categories%}
+            <li>
+              <a href="{% url 'category' category.slug %}">
+                  {{category.name}}
+                  <br>
+
+              </a>
+            </li>
+          {%endfor%}
+
+        </ul>
+      </li>
+      <li><a href="{% url 'services' %}">Services</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+      <li><a href="{% url 'blog' %}">Blog</a></li>
+    </ul>
+  </nav><!-- .navbar -->
+
+  <div class="header-social-links">
+    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+  </div>
+  <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+  <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+</div>
+</header><!-- End Header -->
+
+
+  <section id="blog" class="blog">
+<div class="container  mt-2 ">
+  <div class=" blog-item row  mt-2">
+    <div class="col-md-8  mb-3  mt-4  d-flex justify-content-center">
+      <div class="blog-item ">
         <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
-        <img src="/media/{{post.image}}" class="card-img-top" alt="..." height="250px">
+        <img src="{{post.image.url}}" class="card-img-top" alt="..." height="250px">
         <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
         <p class="card-text ">{{ post.body | safe }}</p>
       </div>
     </div>
 
 
-    <div class="col-md-8 card mb-4  mt-3 ">
-      <div class="card-body">
+    <div class="col-md-8 mb-4  mt-3 ">
+      <div class="blog-item--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------">
         <!-- comments -->
         {% if comments%}
         <h2>{{ comments.count }} comments</h2>
@@ -34,8 +87,8 @@
       </div>
       {% endif %}
     </div>
-    <div class="col-md-8 card mb-4  mt-3 ">
-      <div class="card-body">
+    <div class="blog-item  col-md-8  mb-4  mt-3 ">
+      <div class="blog-item ">
         {% if new_comment %}
         <div class="alert alert-success" role="alert">
           Your comment is awaiting moderation
@@ -53,4 +106,6 @@
     </div>
   </div>
 </div>
+
+</section>
 {% endblock content %}
