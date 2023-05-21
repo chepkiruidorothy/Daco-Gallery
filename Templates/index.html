@@ -2,12 +2,12 @@
 {% block content %}
 {%load static%}
 <header id="header" class="header d-flex align-items-center ">
-  <div class="container-fluid d-flex align-items-center justify-content-between">
+  <div class="container-fluid d-flex align-items-start justify-content-between">
 
-    <a href="{% url 'home' %}" class="logo d-flex align-items-left  me-auto me-lg-0">
+    <a href="{% url 'home' %}" class="logo  d-flex align-items-left  me-auto me-lg-0">
 
 
-      <h1><a href="{% url 'home' %}"> <img src="{% static 'img/unnamed.png' %}" width = "200px" alt=""> </a></h1>
+      <h1><a href="{% url 'home' %}"> <img style="z-index:9999; position:absolute; top:1; " src="{% static 'img/unnamed.png' %}" width = "200px" alt=""> </a></h1>
     </a>
 
 
@@ -50,18 +50,24 @@
   <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
 </div>
-</header><!-- End Header -->
-  <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
-    <div class="container">
+</header ><!-- End Header -->
+<section  class="d-flex justify-content-center">
+  <div class="" style="max-width:100vw; max-height:20vh; top:0;  position:absolute;">
+    <img style="max-width:110vw; max-height:80vh; top:0;" src="static/img/DAC_5761_copy_compressed.JPG" alt="">
+
+  </div>
+  <div id="hero" class=" hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500" >
+    <div class="container" >
       <div class="row justify-content-center">
-        <div class="col-lg-6 text-center">
+        <div class="col-lg-6 text-center" style=" position:absolute; ">
           <h2>Capture <span>your essence </span> with stunningly captured photos infused with African magic</h2>
 
           <a href="{% url 'contact' %}" class="btn-get-started">Experience the magic</a>
         </div>
       </div>
     </div>
-  </section><!-- End Hero Section -->
+  </div><!-- End Hero Section -->
+</section>
 
   <main id="main" data-aos="fade" data-aos-delay="1500">
 
