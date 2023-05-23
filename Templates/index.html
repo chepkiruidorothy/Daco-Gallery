@@ -34,10 +34,7 @@
   </nav><!-- .navbar -->
 
   <div class="header-social-links">
-    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+    <a href="https://www.instagram.com/dacos_gallery/" class="instagram"><i class="bi bi-instagram"></i></a>
   </div>
   <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
   <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
@@ -62,26 +59,26 @@
   </div><!-- End Hero Section -->
 </section>
 
-  <main id="main" class="d-flex" data-aos="fade" data-aos-delay="1500">
+
     <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery">
+
+    <section id="gallery" class="gallery d-flex" data-aos="fade" data-aos-delay="1500">
       <div class="container-fluid">
+        <div class="hero col-lg-6 text-center">
+          <h2><span>Featured</span></h2>
+        </div>
         <div class="row gy-4 justify-content-center">
           {% for image in images %}
-
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="{{image.image.url}}" class="img-fluid" alt="">
-
+            <div class="col-xl-3 col-lg-4 col-md-6">
+              <div class="gallery-item h-100">
+                <img src="{{ image.image.url }}" class="img-fluid" alt="">
+              </div>
             </div>
-          </div><!-- End Gallery Item -->
           {% endfor %}
         </div>
-
       </div>
-    </section><!-- End Gallery Section -->
+    </section>
 
-  </main><!-- End #main -->
 
 
 

@@ -358,7 +358,7 @@ h6 {
 @media (min-width: 600px) {
   .navbar {
     padding: 0.5;
-    z-index: 99999999999999999999999999999999999 !important;  
+    z-index: 99999999999999999999999999999999999 !important;
   }
 
   .navbar ul {
@@ -716,13 +716,13 @@ h6 {
 # Pricing Section
 --------------------------------------------------------------*/
 .gallery {
-  margin-top: 400px;
+  margin-top: 100px;
 }
 
 .gallery .gallery-item {
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .gallery .gallery-item img {
