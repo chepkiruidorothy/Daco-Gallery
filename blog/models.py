@@ -7,6 +7,7 @@ from django.template.defaultfilters import slugify
 from ckeditor.fields import RichTextField
 # Create your models here.
 
+from imageService.resize import resize_image
 
 class Post(models.Model):
     title=models.CharField(max_length=150,unique=True)
@@ -25,9 +26,12 @@ class Post(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
+        self.image = resize_image(self.image)
+		#normal save
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = slugify(self.title)       
         super(Post, self).save(*args, **kwargs)
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

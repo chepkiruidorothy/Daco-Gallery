@@ -1,7 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 # Create your models here.
-from .resize import resize_image,get_dominantcolor
+from imageService.resize import resize_image,get_dominantcolor
 
 class Category(models.Model):
 	name = models.CharField(max_length = 20)
