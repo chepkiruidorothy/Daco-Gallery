@@ -28,10 +28,10 @@ class Gallery(models.Model):
 	dominant_color = models.CharField(default='(228, 237, 230)',max_length=20)
 	height = models.IntegerField(default=200)
 	width = models.IntegerField(default=200)
+	featured = models.BooleanField(default = False)
 
-
-	def save(self, *args, **kwargs):   
-		self.image = resize_image(self.image)
+	def save(self, *args, **kwargs):
+		self.image = resize_image(self.image, 80)
 		self.dominant_color = get_dominantcolor(self.image)
 		self.height = self.image.height
 		self.width = self.image.width

@@ -1,0 +1,52 @@
+.gallery {
+  margin-top: 100px;
+}
+
+.gallery .gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.gallery .gallery-item img {
+  transition: 0.3s;
+
+  break-inside: avoid;
+  margin-bottom: 10px;
+}
+
+
+<main id="main" data-aos="fade" data-aos-delay="1500">
+
+  <!-- Page Header -->
+  <div class="page-header d-flex align-items-center">
+    <div class="container position-relative d-flex justify-content-center text-center">
+      <h2>{{category.name}}</h2>
+    </div>
+  </div>
+  <!-- End Page Header -->
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery">
+    <div class="container-fluid">
+      <div class="row gy-4 col-lg-12 justify-content-center gallery">
+
+        {% if category %}
+          {% for image in images %}
+            <div class="col-xl-3 col-lg-4 col-md-6 gallery-item">
+              <div class="gallery-item h-100">
+                <img src="{{image.image.url}}" class="img-fluid" alt="">
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+
+      </div>
+    </div>
+  </section>
+  <!-- End Gallery Section -->
+
+</main>

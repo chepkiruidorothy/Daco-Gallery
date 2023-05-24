@@ -19,8 +19,6 @@
               <li>
                 <a href="{% url 'category' category.slug %}">
                     {{category.name}}
-                    {{category.slug}}
-                    <br>
 
                 </a>
               </li>
@@ -43,7 +41,7 @@
 </header ><!-- End Header -->
 <section  class="d-flex justify-content-center">
   <div class="" style="position:absolute; top:0">
-    <img style="height: 100vh;width: 100vw;object-fit: cover;" src="static/img/DAC_5761_copy_compressed.JPG" alt="">
+    <img style="height: 100vh;width: 100vw;object-fit: cover;" src="{{cover_image.value.url}}" alt="">
 
   </div>
   <div id="hero" style="margin-top: 100px; margin-bottom: 100px; background: none;" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500" style="background: none;">
@@ -61,23 +59,23 @@
 
 
     <!-- ======= Gallery Section ======= -->
-
     <section id="gallery" class="gallery d-flex" data-aos="fade" data-aos-delay="1500">
+      {% if images %}
       <div class="container-fluid">
         <div class="hero col-lg-6 text-center">
           <h2><span>Featured</span></h2>
         </div>
-        <div class="row gy-4 justify-content-center">
+        <div class="masonry-grid">
           {% for image in images %}
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="{{ image.image.url }}" class="img-fluid" alt="">
-              </div>
-            </div>
+          <div class="masonry-item">
+            <img src="{{ image.image.url }}" class="img-fluid" alt="">
+          </div>
           {% endfor %}
         </div>
       </div>
+      {% endif %}
     </section>
+
 
 
 

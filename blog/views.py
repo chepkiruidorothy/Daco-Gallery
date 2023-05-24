@@ -1,15 +1,17 @@
 
-
 # Create your views here.
 from django.shortcuts import render, redirect
-from .models import *
-from .forms import *
+from .models import Post, Comment
+from .forms import CommentForm
+from photo_site.models import Category
 # Create your views here.
-def home(request):
+def blog(request):
+    categories = Category.objects.all()
     posts = Post.objects.all()
-    return render(request,'home.html',{'posts':posts})
+    return render(request,'blog.html',{'posts':posts,'categories':categories})
 
 def new_post(request):
+    categories = Category.objects.all()
     if request.method=="POST":
         form = PostForm(request.POST, files=request.FILES)
         if form.is_valid():
@@ -20,9 +22,10 @@ def new_post(request):
             return redirect('home')
     else:
         form=PostForm()
-    return render(request, "new_post.html", {'form':form})
+    return render(request, "new_post.html", {'form':form,'categories':categories})
 
 def post_details(request,slug):
+    categories = Category.objects.all()
     post=Post.objects.get(slug=slug)
     comments=Comment.objects.order_by("-created_on")
     new_comment=None
@@ -36,7 +39,7 @@ def post_details(request,slug):
             return render(request, "add_comment.html")
     else:
         form=CommentForm()
-    return render(request, "add_comment.html", { 'form': form ,'post':post, 'comments':comments,'new_comment':new_comment})
+    return render(request, "add_comment.html", { 'form': form ,'post':post, 'comments':comments,'new_comment':new_comment,'categories':categories})
 
 def delete_post(request, slug):
     post=Post.objects.get(slug=slug)

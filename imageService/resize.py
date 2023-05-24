@@ -10,7 +10,9 @@ LANDSCAPE_IMG_SIZE = (600,400)
 PORTRAIT_IMG_SIZE = (480,600)
 
 
-def resize_image(image):
+
+
+def resize_image(image, quality):
     """
         resizes and reduces image quality.
     """
@@ -32,7 +34,7 @@ def resize_image(image):
     im = im.convert('RGB') # convert mode to RGB so we an use JPEG later
     im = im.resize(size, Image.ANTIALIAS)  # resize image
     thumb_io = BytesIO() # create a BytesIO object
-    im.save(thumb_io, 'JPEG', quality=80, progressive=True, optimize=True) # save image to BytesIO object
+    im.save(thumb_io, 'JPEG', quality=quality, progressive=True, optimize=True) # save image to BytesIO object
     new_image = File(thumb_io, name=image.name) # create a django friendly File object
 
     return new_image

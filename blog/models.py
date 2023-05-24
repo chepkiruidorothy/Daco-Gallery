@@ -26,10 +26,10 @@ class Post(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.image = resize_image(self.image)
+        self.image = resize_image(self.image,80)
 		#normal save
         if not self.slug:
-            self.slug = slugify(self.title)       
+            self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
 
 

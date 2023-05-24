@@ -27,5 +27,5 @@ class ImageField(Field):
     value = models.ImageField(upload_to="images")
 
     def save(self, *args, **kwargs):
-        self.image = resize_image(self.image)              
+        self.value = resize_image(self.value, 99)              
         super(ImageField, self).save(*args, **kwargs)
