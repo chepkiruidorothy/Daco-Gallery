@@ -28,6 +28,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
+    path('products/', views.products, name='products'),
+    path('portraits/', views.portraits, name='portraits'),
     path('services/', views.services, name='services'),
     path('contact/', views.contact, name='contact'),
     path('category/<slug:slug>/', views.category, name='category'),

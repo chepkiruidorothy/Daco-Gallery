@@ -3,50 +3,6 @@
 {% load static%}
 
 
-<header id="header" class="header d-flex align-items-center ">
-  <div class="container-fluid d-flex align-items-center justify-content-between">
-
-    <a href="index.html" class="logo d-flex align-items-left  me-auto me-lg-0">
-
-
-      <h1><a href="index.html"> <img src="{% static 'img/unnamed.png' %}" width = "200px" alt=""> </a></h1>
-    </a>
-
-
-  <!-- ======= Hero Section ======= -->
-  <nav id="navbar" class="navbar">
-    <ul>
-      <li><a href="{% url 'home' %}">Home</a></li>
-      <li><a href="{% url 'about' %}">About</a></li>
-      <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-        <ul>
-
-          {%for category in categories%}
-            <li>
-              <a href="{% url 'category' category.slug %}">
-                  {{category.name}}
-                  <br>
-
-              </a>
-            </li>
-          {%endfor%}
-
-        </ul>
-      </li>
-      <li><a href="{% url 'services' %}">Services</a></li>
-      <li><a href="{% url 'contact' %}">Contact</a></li>
-      <li><a href="{% url 'blog' %}">Blog</a></li>
-    </ul>
-  </nav><!-- .navbar -->
-
-  <div class="header-social-links">
-    <a href="https://www.instagram.com/dacos_gallery/" class="instagram"><i class="bi bi-instagram"></i></a>
-  </div>
-  <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-  <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
-</div>
-</header><!-- End Header -->
 
   <main id="main" data-ao
   s="fade" data-aos-delay="1500">
@@ -55,7 +11,7 @@
     <div class="page-header d-flex align-items-center">
       <div class="container position-relative">
         <div class="row d-flex justify-content-start">
-          <div class="col-lg-6 text-right">
+          <div class=" text-right">
             <h2>About</h2>
             <p>We are a team of two dedicated photographers headquartered in Roysambu, Kenya. We specialize in portrait and product photography, and we enjoy capturing the beauty of the human experience as well as the distinctive aspects of items.
 We are both skilled photographers with a keen eye for detail.<br><br>
@@ -74,5 +30,68 @@ We would be honored to collaborate with you if you are searching for a team of p
     </div><!-- End Page Header -->
 
   </main><!-- End #main -->
+
+  <main id="main" data-aos="fade" data-aos-delay="1500">
+
+    <!-- ======= End Page Header ======= -->
+    <div class="page-header d-flex align-items-center">
+      <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2>Contact</h2>
+            <p>Shoot us a message.</p>
+
+          </div>
+        </div>
+      </div>
+    </div><!-- End Page Header -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="row gy-4 justify-content-center">
+
+          <div class="col-lg-3">
+            <div class="info-item d-flex">
+              <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h4>Location:</h4>
+                <p>Roysambu, Nairobi</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-lg-3">
+            <div class="info-item d-flex">
+              <i class="bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h4>Email:</h4>
+                <p>dacogallery@gmail.com</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-lg-3">
+            <div class="info-item d-flex">
+              <i class="bi bi-phone flex-shrink-0"></i>
+              <div>
+                <h4>Call:</h4>
+                <p>+254 718 473 580</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+
+        <div class="row justify-content-center mt-4">
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
 
 {%endblock%}

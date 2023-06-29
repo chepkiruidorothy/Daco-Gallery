@@ -30,6 +30,54 @@
 </head>
 
 <body>
+
+  <header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid d-flex align-items-start justify-content-between">
+      <a href="{% url 'home' %}" class="logo d-flex align-items-left me-auto me-lg-0">
+        <h1><a href="{% url 'home' %}"><img style="z-index: 9999; position: absolute; top: 1;" src="{% static 'img/unnamed.png' %}" width="200px" alt=""></a></h1>
+      </a>
+      <!-- ======= Hero Section ======= -->
+      <nav id="navbar" class="navbar" style="z-index: 99999999999999999999999999999999999">
+        <ul>
+
+          <li class="dropdown">
+            <a href="#"><span>Photography</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              {% for category in categories %}
+                <li>
+                  <a href="{% url 'category' category.slug %}">
+                    {{ category.name }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#"><span>Videography</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              {% for category in categories %}
+                <li>
+                  <a href="{% url 'category' category.slug %}">
+                    {{ category.name }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a href="{% url 'services' %}">Services</a></li>
+          <li><a href="{% url 'about' %}">About us</a></li>
+          <li><a href="{% url 'blog' %}">Blog</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/dacos_gallery/" class="instagram"><i class="bi bi-instagram"></i></a>
+      </div>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    </div>
+  </header><!-- End Header -->
+
   {%block body%}
   <!-- ======= Header ======= -->
 

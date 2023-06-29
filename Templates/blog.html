@@ -4,45 +4,6 @@
 
 {%load static%}
 
-<header id="header" class="header d-flex align-items-center ">
-  <div class="container-fluid d-flex align-items-center justify-content-between">
-
-    <a href="{% url 'home' %}" class="logo d-flex align-items-left  me-auto me-lg-0">
-
-
-      <h1><a href="{% url 'home' %}"> <img src="{% static 'img/unnamed.png' %}" width = "200px" alt=""> </a></h1>
-    </a>
-
-<nav id="navbar" class="navbar">
-  <ul>
-    <li><a href="{% url 'home' %}">Home</a></li>
-    <li><a href="{% url 'about' %}">About</a></li>
-    <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-      <ul>
-          {%for category in categories%}
-            <li>
-              <a href="{% url 'category' category.slug %}">
-                  {{category.name}}
-
-              </a>
-            </li>
-          {%endfor%}
-      </ul>
-    </li>
-    <li><a href="{% url 'services' %}">Services</a></li>
-    <li><a href="{% url 'contact' %}">Contact</a></li>
-    <li><a href="{% url 'blog' %}">Blog</a></li>
-  </ul>
-</nav><!-- .navbar -->
-
-<div class="header-social-links">
-  <a href="https://www.instagram.com/dacos_gallery/" class="instagram"><i class="bi bi-instagram"></i></a>
-</div>
-<i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-<i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
-</div>
-</header><!-- End Header -->
 
 <section id="blog" class="blog">
   <div class="container">

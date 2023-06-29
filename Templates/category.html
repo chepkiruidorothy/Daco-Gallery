@@ -1,77 +1,44 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
 {% block content %}
-{%load static%}
-
-<header id="header" class="header d-flex align-items-center ">
-  <div class="container-fluid d-flex align-items-center justify-content-between">
-
-    <a href="{% url 'home' %}" class="logo d-flex align-items-left  me-auto me-lg-0">
-
-
-      <h1><a href="{% url 'home' %}"> <img src="{% static 'img/unnamed.png' %}" width = "200px" alt=""> </a></h1>
-    </a>
-
-<nav id="navbar" class="navbar">
-  <ul>
-    <li><a href="{% url 'home' %}">Home</a></li>
-    <li><a href="{% url 'about' %}">About</a></li>
-    <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-      <ul>
-
-        {%for category in categories%}
-          <li>
-            <a href="{% url 'category'  category.slug %}">
-                {{category.name}}
-                <br>
-
-            </a>
-          </li>
-        {%endfor%}
-
-      </ul>
-    </li>
-    <li><a href="{% url 'services' %}">Services</a></li>
-    <li><a href="{% url 'contact' %}">Contact</a></li>
-    <li><a href="{% url 'blog' %}">Blog</a></li>
-  </ul>
-</nav><!-- .navbar -->
-
-<div class="header-social-links">
-  <a href="https://www.instagram.com/dacos_gallery/" class="instagram"><i class="bi bi-instagram"></i></a>
-</div>
-<i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-<i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
-</div>
-</header><!-- End Header -->
-
-
-<main id="main" data-aos="fade" data-aos-delay="1500">
-
-  <!-- Page Header -->
-  <div class="page-header d-flex align-items-center">
-    <div class="container position-relative d-flex justify-content-center text-center">
-      <h2>{{category.name}}</h2>
-    </div>
-  </div>
-  <!-- End Page Header -->
 
   <!-- Gallery Section -->
   <section id="gallery" class="gallery">
     <div class="container-fluid">
       <div class="masonry-grid">
-        {% if category %}
-          {% for image in images %}
+        {% for image in images %}
+          {% if image.category.name == "Photography" %}
             <div class="masonry-item">
-              <img src="{{image.image.url}}" class="img-fluid" alt="">
+              {% if image.image %}
+                <img src="{{ image.image.url }}" class="img-fluid" alt="">
+              {% endif %}
             </div>
-          {% endfor %}
-        {% endif %}
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
   </section>
   <!-- End Gallery Section -->
 
-</main>
-
-{%endblock%}
+  <!-- Videography Section -->
+  <section id="videography" class="gallery">
+    <div class="container-fluid">
+      <div class="masonry-grid">
+        {% for image in images %}
+          {% if image.category.name == "Videography" %}
+            <div class="masonry-item">
+              {% if image.embedded_video %}
+                <div class="video-embed">
+                  {{ image.embedded_video }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- End Videography Section -->
+{% endblock %}
