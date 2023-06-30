@@ -8,8 +8,11 @@
   <section id="gallery" class="gallery">
     <div class="container-fluid">
       <div class="masonry-grid">
+          {{category.name}}
         {% for image in images %}
-          {% if image.category.name == "Photography" %}
+
+          {% if image.category.name %}
+
             <div class="masonry-item">
               {% if image.image %}
                 <img src="{{ image.image.url }}" class="img-fluid" alt="">
@@ -23,11 +26,13 @@
   <!-- End Gallery Section -->
 
   <!-- Videography Section -->
-  <section id="videography" class="gallery">
+  <section id="gallery" class="gallery">
     <div class="container-fluid">
       <div class="masonry-grid">
         {% for image in images %}
+
           {% if image.category.name == "Videography" %}
+
             <div class="masonry-item">
               {% if image.embedded_video %}
                 <div class="video-embed">

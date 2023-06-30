@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import random
 from .models import Category, Shoot, Gallery
 
@@ -33,6 +33,21 @@ def category(request,slug):
     images = Gallery.objects.filter(category__slug = slug).exclude(Q(image__isnull=True) & Q(embedded_video__isnull=True))
 
     return render(request,'category.html',{'categories':categories,'category':category,'images':images})
+
+def image_gallery(request,slug):
+    categories = Category.objects.all()
+    category = Category.objects.get(slug=slug)
+    images = Gallery.objects.filter(category__slug=slug,embedded_video__isnull=True, image__isnull=False)
+
+    return render(request, 'image_gallery.html', {'categories': categories,'category':category, 'images': images})
+
+def video_gallery(request, slug):
+    categories = Category.objects.all()
+    category = Category.objects.get(slug=slug)
+    videos = Gallery.objects.filter(category__slug=slug)
+
+
+    return render(request, 'video_gallery.html', {'categories': categories, 'category':category,'videos': videos})
 
 def services(request):
     categories = Category.objects.all()

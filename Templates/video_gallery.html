@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <!-- Video Gallery Section -->
+  <section id="gallery" class="gallery">
+  <div class="container-fluid">
+    <div class="masonry-grid_videos">
+      <h2>{{ category.name }}</h2>
+
+      {% if videos %}
+        {% for video in videos %}
+          <div class="masonry-item_videos">
+            {% if video.embedded_video %}
+              <div class="video-embed video-container">
+                {{ video.embedded_video|safe}}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No videos available for this category.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+
+  <!-- End Video Gallery Section -->
+
+{% endblock %}
