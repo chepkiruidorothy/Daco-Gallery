@@ -2,25 +2,29 @@
 
 {% block content %}
 
-  <!-- Video Gallery Section -->
-  <section id="gallery" class="gallery">
-  <div class="container-fluid">
-    <div class="masonry-grid_videos">
+<section id="">
+  <div class="container-fluid ">
+    <div class="">
       <h2>{{ category.name }}</h2>
 
-      {% if videos %}
-        {% for video in videos %}
-          <div class="masonry-item_videos">
-            {% if video.embedded_video %}
-              <div class="video-embed video-container">
-                {{ video.embedded_video|safe}}
-              </div>
-            {% endif %}
+      <div class="d-flex flex-row ms-2 flex-wrap justify-center">
+        {% if videos %}
+          {% for video in videos %}
+            <div class="ms-3 mb-3 ">
+              {% if video.embedded_video %}
+                <div class="">
+                  {{ video.embedded_video|safe}}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="col">
+            <p>No videos available for this category.</p>
           </div>
-        {% endfor %}
-      {% else %}
-        <p>No videos available for this category.</p>
-      {% endif %}
+        {% endif %}
+      </div>
+
     </div>
   </div>
 </section>
